@@ -6,6 +6,12 @@ body {
   background-image: url(http://localhost:4000/images/background-faces.png);
 }
 
+input {
+  border-radius: 10px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
 /* Alerts and form errors used by phx.new */
 .alert {
   padding: 15px;
@@ -91,4 +97,14 @@ body {
   color: black;
   text-decoration: none;
   cursor: pointer;
+}
+
+/* Buttons */
+
+.btn-register {
+  color: white;
+  background-color: black;
+  border-radius: 20px;
+  padding: 10px;
+
 }
