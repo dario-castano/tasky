@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  background-image: url(http://localhost:4000/images/background-faces.png);
+}
+
 /* Alerts and form errors used by phx.new */
 .alert {
   padding: 15px;
