@@ -10,11 +10,11 @@
     <script defer phx-track-static type="text/javascript" src={Routes.static_path(@conn, "/assets/app.js")}></script>
   </head>
   <body>
-    <div class="w-screen h-screen flex flex-row flex-wrap content-center">
+    <header>
+      <%= render "_user_menu.html", assigns %>
+    </header>
+    <div class="w-full h-full flex flex-row flex-wrap content-center">
       <div class="w-screen object-center">
-        <div class="flex flex-col flex-wrap content-center">
-          <%= render "_user_menu.html", assigns %>
-        </div>
         <div class="flex flex-col flex-wrap content-center">
           <div>
             <%= @inner_content %>

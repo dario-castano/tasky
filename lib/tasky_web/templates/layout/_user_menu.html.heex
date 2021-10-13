@@ -1,17 +1,22 @@
-
 <%= if @current_user do %>
-  <h2><%= @current_user.email %></h2>
-  <%= link "Settings", to: Routes.user_settings_path(@conn, :edit) %>
-  <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete %>
-<% else %>
- <div>
-  <%= button "Registrarse", 
-          to: Routes.user_registration_path(@conn, :new),
-          class: "btn-black" %>
-
-  <%= button "Iniciar sesión", 
-          to: Routes.user_session_path(@conn, :new),
-          class: "btn-black" %>
+  <div class="flex flex-row place-content-center">
+    <div class="my-3">  
+      <%= link "Settings", to: Routes.user_settings_path(@conn, :edit), class: "btn-black" %>
+    </div>
+    <div class="my-3"> 
+      <%= link "Log out", to: Routes.user_session_path(@conn, :delete), method: :delete, class: "btn-black" %>
+    </div>
   </div>
+  <h1 class="text-center"><%= @current_user.email %></h1>  
+<% else %>
+  <div class="flex flex-row place-content-center">
+    <div class="my-3">
+      <%= link "Register", to: Routes.user_registration_path(@conn, :new), class: "btn-black" %>
+    </div>
+    <div class="my-3">
+      <%= link "Log in", to: Routes.user_session_path(@conn, :new), class: "btn-black" %>
+    </div>
+  </div>
+
 <% end %>
 
