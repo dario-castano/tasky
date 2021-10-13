@@ -2,7 +2,14 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Typo Round Regular';
+  src: url(http://localhost:4000/fonts/Typo_Round_Regular_Demo.otf);
+}
+
 body {
+  width: 100vw;
+  height: 100vh;
   background-image: url(http://localhost:4000/images/background-faces.png);
 }
 
@@ -101,10 +108,13 @@ input {
 
 /* Buttons */
 
-.btn-register {
+.btn-black {
+  min-width: 120px;
   color: white;
+  font-family: 'Typo Round Regular';
   background-color: black;
   border-radius: 20px;
   padding: 10px;
+  margin: 5px;
 
 }
