@@ -1,0 +1,22 @@
+<h1>Show Checklist</h1>
+
+<%= if @live_action in [:edit] do %>
+  <%= live_modal TaskyWeb.ChecklistLive.FormComponent,
+    id: @checklist.id,
+    title: @page_title,
+    action: @live_action,
+    checklist: @checklist,
+    return_to: Routes.checklist_show_path(@socket, :show, @checklist) %>
+<% end %>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @checklist.name %>
+  </li>
+
+</ul>
+
+<span><%= live_patch "Edit", to: Routes.checklist_show_path(@socket, :edit, @checklist), class: "button" %></span> |
+<span><%= live_redirect "Back", to: Routes.checklist_index_path(@socket, :index) %></span>

@@ -1,0 +1,35 @@
+<h1>Listing Checklists</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal TaskyWeb.ChecklistLive.FormComponent,
+    id: @checklist.id || :new,
+    title: @page_title,
+    action: @live_action,
+    checklist: @checklist,
+    return_to: Routes.checklist_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="checklists">
+    <%= for checklist <- @checklists do %>
+      <tr id={"checklist-#{checklist.id}"}>
+        <td><%= checklist.name %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.checklist_show_path(@socket, :show, checklist) %></span>
+          <span><%= live_patch "Edit", to: Routes.checklist_index_path(@socket, :edit, checklist) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: checklist.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Checklist", to: Routes.checklist_index_path(@socket, :new) %></span>

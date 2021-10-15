@@ -1,5 +1,6 @@
 defmodule TaskyWeb.Router do
   use TaskyWeb, :router
+  import Phoenix.LiveView.Router
 
   import TaskyWeb.UserAuth
 
@@ -7,10 +8,10 @@ defmodule TaskyWeb.Router do
     plug :accepts, ["html"]
     plug :fetch_session
     plug :fetch_live_flash
-    plug :put_root_layout, {TaskyWeb.LayoutView, :root}
     plug :protect_from_forgery
     plug :put_secure_browser_headers
     plug :fetch_current_user
+    plug :put_root_layout, {TaskyWeb.LayoutView, :root}
   end
 
   pipeline :api do
@@ -77,6 +78,30 @@ defmodule TaskyWeb.Router do
     get "/users/settings", UserSettingsController, :edit
     put "/users/settings", UserSettingsController, :update
     get "/users/settings/confirm_email/:token", UserSettingsController, :confirm_email
+
+    live "/notebooks", NotebookLive.Index, :index
+    live "/notebooks/new", NotebookLive.Index, :new
+    live "/notebooks/:id/edit", NotebookLive.Index, :edit
+    live "/notebooks/:id", NotebookLive.Show, :show
+    live "/notebooks/:id/show/edit", NotebookLive.Show, :edit
+
+    live "/checklists", ChecklistLive.Index, :index
+    live "/checklists/new", ChecklistLive.Index, :new
+    live "/checklists/:id/edit", ChecklistLive.Index, :edit
+    live "/checklists/:id", ChecklistLive.Show, :show
+    live "/checklists/:id/show/edit", ChecklistLive.Show, :edit
+
+    live "/categories", CategoryLive.Index, :index
+    live "/categories/new", CategoryLive.Index, :new
+    live "/categories/:id/edit", CategoryLive.Index, :edit
+    live "/categories/:id", CategoryLive.Show, :show
+    live "/categories/:id/show/edit", CategoryLive.Show, :edit
+
+    live "/todos", TodoLive.Index, :index
+    live "/todos/new", TodoLive.Index, :new
+    live "/todos/:id/edit", TodoLive.Index, :edit
+    live "/todos/:id", TodoLive.Show, :show
+    live "/todos/:id/show/edit", TodoLive.Show, :edit
   end
 
   scope "/", TaskyWeb do
