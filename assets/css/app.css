@@ -24,6 +24,11 @@ h1 {
   font-size: xx-large;
 }
 
+h3 {
+  font-family: 'Rocko';
+  font-size: x-large;
+}
+
 /* Alerts and form errors used by phx.new */
 .alert {
   font-family: 'Rocko';
