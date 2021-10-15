@@ -1,2 +1,5 @@
-<img src={Routes.static_path(@conn, "/images/logo-neutral.svg")} />
-
+<%= if @current_user do %>
+    <p>Main content</p>
+<% else %>
+    <img src={Routes.static_path(@conn, "/images/logo-neutral.svg")} />
+<% end %>
