@@ -1,3 +1,9 @@
+<%= unless home_page?(@conn) do %>
+  <div class="flex flex-row h-32 place-content-center">
+    <img class="h-full object-scale-down" src={Routes.static_path(@conn, Enum.random(@conn.dogos))} />
+  </div>
+<% end %>
+
 <%= if @current_user do %>
   <div class="flex flex-row place-content-center">
     <div class="my-3">  

@@ -12,6 +12,7 @@ defmodule TaskyWeb.Router do
     plug :put_secure_browser_headers
     plug :fetch_current_user
     plug :put_root_layout, {TaskyWeb.LayoutView, :root}
+    plug Plugs.AddDogos
   end
 
   pipeline :api do
