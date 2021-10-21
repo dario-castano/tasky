@@ -4,8 +4,7 @@ defmodule Tasky.Todos.Category do
 
   schema "categories" do
     field :title, :string
-
-    belongs_to :checklists, Tasky.Todos.Checklist
+    has_many :checklists, Tasky.Todos.Checklist
 
     timestamps()
   end

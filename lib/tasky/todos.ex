@@ -18,7 +18,7 @@ defmodule Tasky.Todos do
 
   """
   def list_categories do
-    Repo.all(Category)
+    Repo.all(Category) |> Repo.preload(:checklist)
   end
 
   @doc """
@@ -210,7 +210,7 @@ defmodule Tasky.Todos do
 
   """
   def list_checklists do
-    Repo.all(Checklist)
+    Repo.all(Checklist) |> Repo.preload(:category)
   end
 
   @doc """
@@ -227,7 +227,7 @@ defmodule Tasky.Todos do
       ** (Ecto.NoResultsError)
 
   """
-  def get_checklist!(id), do: Repo.get!(Checklist, id)
+  def get_checklist!(id), do: Repo.get!(Checklist, id) |> Repo.preload(:category)
 
   @doc """
   Creates a checklist.

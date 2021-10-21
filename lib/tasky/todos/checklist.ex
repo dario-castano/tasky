@@ -4,7 +4,7 @@ defmodule Tasky.Todos.Checklist do
 
   schema "checklists" do
     field :name, :string
-    field :category_id, :id
+    belongs_to :category, Tasky.Todos.Category
 
     timestamps()
   end
@@ -13,6 +13,7 @@ defmodule Tasky.Todos.Checklist do
   def changeset(checklist, attrs) do
     checklist
     |> cast(attrs, [:name])
+    |> cast_assoc(:category, required: true)
     |> validate_required([:name])
   end
 end
